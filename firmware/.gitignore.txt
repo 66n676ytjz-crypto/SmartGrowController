@@ -1,0 +1,14 @@
+SmartGrowController/
+│
+├── .gitignore        ← HERE
+├── README.md
+├── LICENSE
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── ROADMAP.md
+├── CODE_OF_CONDUCT.md
+│
+├── firmware/
+├── docs/
+├── hardware/
+└── images/
