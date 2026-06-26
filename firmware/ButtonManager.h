@@ -3,10 +3,10 @@
 #include "Manager.h"
 #include "HAL.h"
 
-class ButtonManager : public Manager
+class BuzzerManager : public Manager
 {
 public:
-    explicit ButtonManager(HAL& hal);
+    explicit BuzzerManager(HAL& hal);
 
     void begin() override;
 
