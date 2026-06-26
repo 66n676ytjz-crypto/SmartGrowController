@@ -1,12 +1,16 @@
 #pragma once
+
 #include "Manager.h"
 #include "HAL.h"
-class BuzzerManager: public Manager{
+
+class BuzzerManager : public Manager
+{
 public:
- explicit BuzzerManager(HAL& h);
- void begin() override;
- void update(GrowData& data) override;
+    explicit BuzzerManager(HAL& hal);
+
+    void begin() override;
+    void update(GrowData& data) override;
+
 private:
- HAL& hal;
- uint32_t lastBeep=0;
+    HAL& hal;
 };
