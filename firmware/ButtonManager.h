@@ -1,34 +1,17 @@
-/******************************************************************************
- *
- * Flora Core
- * Button Manager
- *
- ******************************************************************************/
-
 #pragma once
 
-#include <Arduino.h>
-
+#include "Manager.h"
 #include "HAL.h"
-#include "GrowData.h"
 
-class ButtonManager
+class ButtonManager : public Manager
 {
 public:
+    explicit ButtonManager(HAL& hal);
 
-    ButtonManager(HAL& hal);
+    void begin() override;
 
-    void begin();
-
-    void update(GrowData& data);
+    void update(GrowData& data) override;
 
 private:
-
     HAL& hal;
-
-    bool lastState = false;
-
-    uint32_t lastDebounce = 0;
-
-    static constexpr uint32_t DEBOUNCE_MS = 50;
 };
