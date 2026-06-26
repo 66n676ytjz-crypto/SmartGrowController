@@ -1,6 +1,6 @@
 /******************************************************************************
  *
- * Flora Core
+ * SmartGrowController
  * Flora Controller
  *
  ******************************************************************************/
@@ -8,10 +8,11 @@
 #include "FloraController.h"
 
 FloraController::FloraController()
-    : sensors(hal),
-      pump(hal),
-      button(hal),
-      buzzer(hal)
+    :
+    sensors(hal),
+    button(hal),
+    pump(hal),
+    buzzer(hal)
 {
 }
 
@@ -23,29 +24,40 @@ void FloraController::begin()
 
     display.begin();
 
-    pump.begin();
-
     button.begin();
+
+    pump.begin();
 
     buzzer.begin();
 }
 
 void FloraController::update()
 {
-    // Read Sensors
+    //-------------------------------------------------
+    // System Time
+    //-------------------------------------------------
+
+    data.system.now = millis();
+
+    //-------------------------------------------------
+    // Inputs
+    //-------------------------------------------------
+
     sensors.update(data);
 
-    // Read Inputs
     button.update(data);
 
-    // Process Outputs
+    //-------------------------------------------------
+    // Automation
+    //-------------------------------------------------
+
     pump.update(data);
 
     buzzer.update(data);
 
-    // Update Display Last
-    display.update(data);
-}
-    buzzer.update(data);
+    //-------------------------------------------------
+    // Outputs
+    //-------------------------------------------------
+
     display.update(data);
 }
