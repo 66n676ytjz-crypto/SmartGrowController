@@ -1,18 +1,12 @@
 #pragma once
 
 #include "Manager.h"
-#include "HAL.h"
 
-class SensorManager : public Manager
+class DisplayManager : public Manager
 {
 public:
-    explicit SensorManager(HAL& hal);
+    DisplayManager();
 
     void begin() override;
-
     void update(GrowData& data) override;
-
-private:
-    HAL& hal;
-};
 };
