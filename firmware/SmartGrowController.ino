@@ -1,6 +1,50 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+/******************************************************************************
+ *
+ * Flora Core
+ * SmartGrowController
+ *
+ * Main Application
+ *
+ * Version: 0.1.0
+ *
+ ******************************************************************************/
+
+#include <Arduino.h>
+
+#include "Config.h"
+#include "FloraController.h"
+
+//==========================================================
+// Global Controller
+//==========================================================
+
+FloraController flora;
+
+//==========================================================
+// Arduino Setup
+//==========================================================
+
+void setup()
+{
+    Serial.begin(SERIAL_BAUD);
+
+    DEBUG_PRINTLN();
+    DEBUG_PRINTLN("========================================");
+    DEBUG_PRINTLN("      Flora Core");
+    DEBUG_PRINT("      Version ");
+    DEBUG_PRINTLN(FLORA_VERSION);
+    DEBUG_PRINTLN("========================================");
+
+    flora.begin();
+
+    DEBUG_PRINTLN("System Ready");
+}
+
+//==========================================================
+// Arduino Loop
+//==========================================================
+
+void loop()
+{
+    flora.update();
 }
