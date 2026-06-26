@@ -1,18 +1,17 @@
-struct PumpData
+#pragma once
+
+#include "Manager.h"
+#include "HAL.h"
+
+class PumpManager : public Manager
 {
-    bool enabled = true;
+public:
+    explicit PumpManager(HAL& hal);
 
-    bool running = false;
+    void begin() override;
 
-    bool manualRequest = false;
+    void update(GrowData& data) override;
 
-    bool lowTankLockout = false;
-
-    uint32_t startTime = 0;
-
-    uint32_t lastRun = 0;
-
-    uint32_t totalRuns = 0;
-
-    uint32_t totalRuntime = 0;
+private:
+    HAL& hal;
 };
