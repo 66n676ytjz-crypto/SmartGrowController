@@ -9,25 +9,19 @@ class DisplayManager
 {
 public:
     void begin();
-
-    void update(const GrowData& data);
-
-    void showHome();
-
-    void showInfo();
+    void update(GrowData &data);
 
 private:
-    LiquidCrystal_I2C lcd =
-        LiquidCrystal_I2C(
-            LCD_ADDRESS,
-            LCD_COLUMNS,
-            LCD_ROWS);
+    LiquidCrystal_I2C lcd{LCD_ADDRESS, LCD_COLUMNS, LCD_ROWS};
 
-    bool currentInfoPage = false;
+    bool showingInfo = false;
+    unsigned long infoStart = 0;
 
-    float lastTemp = -999;
-    float lastHumidity = -999;
-
+    float lastTemp = -999.0f;
+    float lastHumidity = -999.0f;
     uint8_t lastSoil = 255;
     uint8_t lastTank = 255;
+
+    void drawHome(const GrowData &data);
+    void drawInfo(const GrowData &data);
 };
