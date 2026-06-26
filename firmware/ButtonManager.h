@@ -3,13 +3,12 @@
 #include "Manager.h"
 #include "HAL.h"
 
-class BuzzerManager : public Manager
+class ButtonManager : public Manager
 {
 public:
-    explicit BuzzerManager(HAL& hal);
+    explicit ButtonManager(HAL& hal);
 
     void begin() override;
-
     void update(GrowData& data) override;
 
 private:
