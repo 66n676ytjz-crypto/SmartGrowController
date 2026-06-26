@@ -9,7 +9,6 @@ public:
     explicit PumpManager(HAL& hal);
 
     void begin() override;
-
     void update(GrowData& data) override;
 
 private:
