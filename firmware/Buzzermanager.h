@@ -1,33 +1,16 @@
-/******************************************************************************
- *
- * Flora Core
- * Buzzer Manager
- *
- ******************************************************************************/
-
 #pragma once
 
-#include <Arduino.h>
-
+#include "Manager.h"
 #include "HAL.h"
-#include "GrowData.h"
-#include "Config.h"
 
-class BuzzerManager
+class BuzzerManager : public Manager
 {
 public:
-
     explicit BuzzerManager(HAL& hal);
 
-    void begin();
-
-    void update(GrowData& data);
+    void begin() override;
+    void update(GrowData& data) override;
 
 private:
-
     HAL& hal;
-
-    uint32_t lastBeep = 0;
-
-    void beepLowWater();
 };
