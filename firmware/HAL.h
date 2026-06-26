@@ -1,27 +1,34 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+#pragma once
 
-\f0\fs24 \cf0 #pragma once\
-\
-#include <Arduino.h>\
-#include "Config.h"\
-\
-class HAL\
-\{\
-public:\
-    void begin();\
-\
-    // Outputs\
-    void setPump(bool on);\
-    void beep(uint16_t frequency = 2000, uint16_t duration = 150);\
-\
-    // Inputs\
-    bool readButton();\
-    int readSoil();\
-    int readWater();\
-    int readLight();\
-\};}
+#include <Arduino.h>
+#include <Wire.h>
+
+class HAL
+{
+public:
+    HAL() = default;
+
+    void begin();
+
+    // GPIO
+    bool digitalReadPin(uint8_t pin);
+    void digitalWritePin(uint8_t pin, bool state);
+
+    // Analog
+    uint16_t analogReadPin(uint8_t pin);
+
+    // I2C
+    TwoWire& i2c();
+
+    // Pump
+    void setPump(bool on);
+
+    // Button
+    bool readButton();
+
+    // Buzzer
+    void beep(uint16_t frequency, uint16_t duration);
+
+private:
+    static constexpr uint8_t BUZZER_CHANNEL = 0;
+};
